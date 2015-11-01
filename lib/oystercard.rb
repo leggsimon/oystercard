@@ -1,5 +1,6 @@
 class Oystercard
 
+  PENALTY_FARE = 10
   MAXIMUM_BALANCE = 50
   FARES = {
             "1 => 1" => 2,
@@ -26,13 +27,26 @@ class Oystercard
   end
 
   def touch_out journey_end
-    @journey.end_journey_at(journey_end)
-    deduct_fare(@journey.start_point.zone, @journey.end_point.zone)
+    if !@journey
+      charge_penalty_fare
+    else
+      finalize_journey journey_end
+    end
   end
 
   private
 
   def deduct_fare entry_zone, exit_zone
     @balance -= FARES["#{entry_zone} => #{exit_zone}"]
+  end
+
+  def charge_penalty_fare
+    @balance -= PENALTY_FARE
+  end
+
+  def finalize_journey journey_end
+    @journey.end_journey_at(journey_end)
+    deduct_fare(@journey.start_point.zone, @journey.end_point.zone)
+    @journey = nil
   end
 end
