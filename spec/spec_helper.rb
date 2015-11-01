@@ -1,5 +1,7 @@
+require 'capybara/rspec'
 require 'simplecov'
 SimpleCov.start 'rails'
+
 
 Dir["./lib/*.rb"].each {|file| require file }
 
