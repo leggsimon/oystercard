@@ -29,6 +29,7 @@ describe 'Oystercard' do
 
     it "'touching in' creates a new journey" do
       cannon_street = double(:cannon_street)
+      oystercard.top_up(10)
       expect(Journey).to receive(:new).with(cannon_street)
       oystercard.touch_in cannon_street
     end
@@ -40,6 +41,11 @@ describe 'Oystercard' do
       oystercard.touch_in cannon_street
       oystercard.touch_out aldgate_east
       expect(oystercard.balance).to eq 8
+    end
+
+    it "doesn't allow you to touch in without the minimum fare" do
+      cannon_street = double(:cannon_street)
+      expect { oystercard.touch_in(cannon_street) }.to raise_error "You don't have enough money!"
     end
   end
 end

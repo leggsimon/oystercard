@@ -1,5 +1,6 @@
 class Oystercard
   PENALTY_FARE = 10
+  MINIMUM_BALANCE = 2
   MAXIMUM_BALANCE = 50
   FARES = {
     '1 => 1' => 2,
@@ -22,6 +23,7 @@ class Oystercard
   end
 
   def touch_in(journey_start)
+    fail "You don't have enough money!" if balance < MINIMUM_BALANCE
     @journey = Journey.new(journey_start)
   end
 
