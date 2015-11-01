@@ -14,5 +14,4 @@ describe 'Journey' do
     journey.end_journey_at(aldgate_east)
     expect(journey.end_point).to eq aldgate_east
   end
-
 end

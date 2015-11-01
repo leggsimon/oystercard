@@ -7,6 +7,6 @@ describe 'Tube station' do
   end
 
   it "won't initialize if station doesn't exist" do
-    expect{ TubeStation.new(:aldwych) }.to raise_error "This station doesn't exist!"
+    expect { TubeStation.new(:aldwych) }.to raise_error "This station doesn't exist!"
   end
 end

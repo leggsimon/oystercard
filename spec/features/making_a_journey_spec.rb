@@ -10,5 +10,4 @@ feature 'Making a journey' do
     oystercard.touch_out aldgate_east
     expect(oystercard.balance).to eq 8
   end
-
 end
