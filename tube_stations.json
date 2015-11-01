@@ -1,0 +1,17 @@
+{
+  "aldgate_east": {
+    "zone": 1
+  },
+  "baker_street": {
+    "zone": 2
+  },
+  "cannon_street": {
+    "zone": 1
+  },
+  "old_street": {
+    "zone": 2
+  },
+  "whitechapel": {
+    "zone": 2
+  }
+}
