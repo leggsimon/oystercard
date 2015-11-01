@@ -21,13 +21,13 @@ class Oystercard
     @balance = amount + balance
   end
 
-  def touch_in station
-    @entry_station = station
+  def touch_in journey_start
+    @journey = Journey.new(journey_start)
   end
 
-  def touch_out station
-    @exit_station = station
-    deduct_fare(@entry_station.zone, @exit_station.zone)
+  def touch_out journey_end
+    @journey.end_journey_at(journey_end)
+    deduct_fare(@journey.start_point.zone, @journey.end_point.zone)
   end
 
   private
